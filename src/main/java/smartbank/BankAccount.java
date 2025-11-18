@@ -2,9 +2,9 @@ package smartbank;
 
 public class BankAccount {
 
-    public int accountNumber;          // as required
-    protected double balance;          // as required
-    private final String holderName;         // as required
+    public int accountNumber;
+    protected double balance;
+    private final String holderName;
 
     private static int nextAccountNumber = 1000; // static auto-increment
 
