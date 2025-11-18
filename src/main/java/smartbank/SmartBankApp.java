@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public class SmartBankApp extends Application {
 
-    private ArrayList<BankAccount> accounts = new ArrayList<>();
-    private ArrayList<Transaction> transactions = new ArrayList<>();
+    private final ArrayList<BankAccount> accounts = new ArrayList<>();
+    private final ArrayList<Transaction> transactions = new ArrayList<>();
 
     private TextArea outputArea;
     private TextField txtHolderName;
@@ -22,9 +22,8 @@ public class SmartBankApp extends Application {
     private TextField txtAccountNumber;
     private ChoiceBox<String> accountTypeChoice;
 
-    // Required main entry point
     public static void main(String[] args) {
-        launch(args);  // JavaFX launcher
+        launch(args);
     }
 
     @Override
@@ -126,7 +125,7 @@ public class SmartBankApp extends Application {
 
     private void deposit() {
         Optional<BankAccount> opt = findAccountFromInput();
-        if (!opt.isPresent()) return;
+        if (opt.isEmpty()) return;
 
         BankAccount acc = opt.get();
 
@@ -146,7 +145,7 @@ public class SmartBankApp extends Application {
 
     private void withdraw() {
         Optional<BankAccount> opt = findAccountFromInput();
-        if (!opt.isPresent()) return;
+        if (opt.isEmpty()) return;
 
         BankAccount acc = opt.get();
 
@@ -168,7 +167,7 @@ public class SmartBankApp extends Application {
 
     private void showAccountDetails() {
         Optional<BankAccount> opt = findAccountFromInput();
-        if (!opt.isPresent()) return;
+        if (opt.isEmpty()) return;
 
         BankAccount acc = opt.get();
         outputArea.appendText("Account Details:\n" + acc.displayAccountDetails() + "\n");

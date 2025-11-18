@@ -2,7 +2,7 @@ package smartbank;
 
 public class CreditAccount extends BankAccount {
 
-    private double creditLimit; // how far below zero balance can go
+    private final double creditLimit; // how far below zero balance can go
 
     public CreditAccount(String holderName, double openingBalance, double creditLimit) {
         super(holderName, openingBalance);
@@ -10,7 +10,7 @@ public class CreditAccount extends BankAccount {
     }
 
     @Override
-    public boolean withdraw(double amount) throws InsufficientBalanceException {
+    public void withdraw(double amount) throws InsufficientBalanceException {
         if (amount <= 0) {
             throw new IllegalArgumentException("Withdrawal must be positive");
         }
@@ -21,6 +21,5 @@ public class CreditAccount extends BankAccount {
             );
         }
         super.balance = newBalance;
-        return true;
     }
 }

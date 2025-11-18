@@ -4,7 +4,7 @@ public class BankAccount {
 
     public int accountNumber;          // as required
     protected double balance;          // as required
-    private String holderName;         // as required
+    private final String holderName;         // as required
 
     private static int nextAccountNumber = 1000; // static auto-increment
 
@@ -34,7 +34,7 @@ public class BankAccount {
     }
 
     // Will be overridden in subclasses
-    public boolean withdraw(double amount) throws InsufficientBalanceException {
+    public void withdraw(double amount) throws InsufficientBalanceException {
         if (amount <= 0) {
             throw new IllegalArgumentException("Withdrawal must be positive");
         }
@@ -42,7 +42,6 @@ public class BankAccount {
             throw new InsufficientBalanceException("Not enough balance");
         }
         balance -= amount;
-        return true;
     }
 
     public String displayAccountDetails() {

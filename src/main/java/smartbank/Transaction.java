@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 
 public class Transaction {
 
-    private int accountNumber;
-    private String type;  // "DEPOSIT" or "WITHDRAW"
-    private double amount;
-    private LocalDateTime dateTime;
+    private final int accountNumber;
+    private final String type;  // "DEPOSIT" or "WITHDRAW"
+    private final double amount;
+    private final LocalDateTime dateTime;
 
     public Transaction(int accountNumber, String type, double amount) {
         this.accountNumber = accountNumber;

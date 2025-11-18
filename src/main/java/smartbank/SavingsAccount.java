@@ -2,7 +2,7 @@ package smartbank;
 
 public class SavingsAccount extends BankAccount {
 
-    private double minimumBalance;
+    private final double minimumBalance;
 
     public SavingsAccount(String holderName, double openingBalance, double minimumBalance) {
         super(holderName, openingBalance);
@@ -10,7 +10,7 @@ public class SavingsAccount extends BankAccount {
     }
 
     @Override
-    public boolean withdraw(double amount) throws InsufficientBalanceException {
+    public void withdraw(double amount) throws InsufficientBalanceException {
         if (amount <= 0) {
             throw new IllegalArgumentException("Withdrawal must be positive");
         }
@@ -20,9 +20,6 @@ public class SavingsAccount extends BankAccount {
                     "Cannot go below minimum balance of " + minimumBalance
             );
         }
-        // simple way to update balance: call parent deposit/withdraw logic or adjust directly
-        // Using direct adjustment (balance is protected in parent):
         super.balance = newBalance;
-        return true;
     }
 }
